@@ -12,8 +12,8 @@ function love.draw()
 	Game:draw()
 end
 
-function love:keypressed(key)
+function love.keypressed(key)
 	if key == "escape" then
-		self.event.quit()
+		love.event.quit()
 	end
 end
