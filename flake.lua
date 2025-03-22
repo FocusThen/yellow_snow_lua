@@ -26,6 +26,17 @@ function Flake:bottom()
 	return self._y + self._height
 end
 
+function Flake:left()
+  return self._x
+end
+function Flake:right()
+  return self._x + self._width
+end
+
+function Flake:isWhite()
+  return self._is_white
+end
+
 function Flake:update(dt)
 	self._y = self._y + FLAKE_SPEED * dt
 	if self:bottom() > GROUND_HEIGHT then

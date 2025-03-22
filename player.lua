@@ -1,6 +1,7 @@
 local PLAYER_Y = 378
 local PLAYER_SPEED = 300
-local OFF_SET = 47
+local X_OFF_SET = 47
+local TOP_OFFSET = 12
 
 local Player = {
 	_is_right = true,
@@ -17,26 +18,30 @@ function Player:new(image)
 end
 
 function Player:left()
-	return self._x + OFF_SET
+	return self._x + X_OFF_SET
 end
 
 function Player:right()
-	return self._x + self._width - OFF_SET
+	return self._x + self._width - X_OFF_SET
+end
+
+function Player.top()
+  return PLAYER_Y + TOP_OFFSET
 end
 
 function Player:update(dt)
-	if love.keyboard.isDown("left") then
+	if love.keyboard.isDown("left") or love.keyboard.isDown("a") then
 		self._is_right = false
 		self._x = self._x - PLAYER_SPEED * dt
 		if self:left() < 0 then
-			self._x = -OFF_SET
+			self._x = -X_OFF_SET
 		end
 	end
-	if love.keyboard.isDown("right") then
+	if love.keyboard.isDown("right") or love.keyboard.isDown("d") then
 		self._is_right = true
 		self._x = self._x + PLAYER_SPEED * dt
 		if self:right() > love.graphics.getWidth() then
-			self._x = love.graphics.getWidth() + OFF_SET - self._width
+			self._x = love.graphics.getWidth() + X_OFF_SET - self._width
 		end
 	end
 end

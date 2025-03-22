@@ -15,5 +15,7 @@ end
 function love.keypressed(key)
 	if key == "escape" then
 		love.event.quit()
+	elseif key == "space" and not Game:isPlaying() then
+		Game:reset()
 	end
 end
