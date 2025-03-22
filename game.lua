@@ -71,7 +71,7 @@ function Game:checkCollision(flake)
 		else
 			self.hit:clone():play()
 			self._is_playing = false
-	self.music:stop()
+			self.music:stop()
 		end
 	end
 end
